@@ -22,6 +22,15 @@ class Book
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $ISBN = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $author = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $publicationDate = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +56,42 @@ class Book
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getISBN(): ?string
+    {
+        return $this->ISBN;
+    }
+
+    public function setISBN(?string $ISBN): static
+    {
+        $this->ISBN = $ISBN;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getPublicationDate(): ?\DateTimeInterface
+    {
+        return $this->publicationDate;
+    }
+
+    public function setPublicationDate(\DateTimeInterface $publicationDate): static
+    {
+        $this->publicationDate = $publicationDate;
 
         return $this;
     }
